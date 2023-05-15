@@ -391,7 +391,8 @@ public class PrinterMachine implements AllInOneDevice {
 필요한 Print는 override되었지만 나머지 기능은 구현할 필요가 없기 때문에 UnsupportedOperationException를 발생 시키고 있습니다. <br>
 
 이렇게 구현된 객체는 자신에게 필요없는 책임(copy, fax)를 가지고 있어 SOLID의 첫번째 원칙인 SRP도 어기고 있는것을 확인할 수 있습니다. <br>
-해결책은 ISP의 이름에도 나와 있듯 하나의 인터페이스를 분리하여 여러개의 인터페이스로 나누는 것입니다.
+해결책은 ISP의 이름에도 나와 있듯 하나의 인터페이스를 분리하여 여러개의 인터페이스로 나누는 것입니다.  
+
 인터페이스 분리 원칙 올바른 예시
 ---
 
