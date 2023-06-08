@@ -94,3 +94,36 @@ public class UserController {
 - View는 UserView 클래스로 구현되어 사용자 정보를 표시하고 오류 메시지를 출력  
 - Controller는 UserController 클래스로 구현되어 사용자의 입력을 받고, Model과 View 간의 상호작용을 조정  
 
+---
+
+MVC에서 사용되는 어노테이션
+---
+
+> - @Controller : 해당 클래스를 컨트롤러로 지정
+> - @RequestMapping : 요청 경로와 HTTP 메서드에 대한 매핑을 지정
+> - @ResponseBody : 객체를 JSON이나 XML 등의 형식으로 변환하여 응답
+> - @GetMapping : HTTP GET 요청을 처리하는 메서드에 적용
+
+예시
+```java
+@Controller
+@RequestMapping("/api/users")
+public class UserController {
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public User getUser(@PathVariable("id") int id) {
+        // 사용자 정보를 데이터베이스에서 조회하는 로직
+        User user = userService.getUserById(id);
+        return user;
+    }
+
+    @GetMapping("/{id}/orders")
+    @ResponseBody
+    public List<Order> getUserOrders(@PathVariable("id") int id) {
+        // 사용자의 주문 목록을 데이터베이스에서 조회하는 로직
+        List<Order> orders = orderService.getUserOrders(id);
+        return orders;
+    }
+}
+```
